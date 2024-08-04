@@ -76,12 +76,15 @@ jobs:
     - name: Job Contexts
       run: |
         echo '${{ toJson(job) }}'
-        echo '${{ toJson(job.*.status) }}'
         echo '${{ toJson(job.status) }}'
 
+    - name: Failure
+      if: contains(fromJson(job.status),'failure')  
+      run: |
+        echo 'Opps, Its a ${{ fromJson(job.status) }}!'     
 
     - name: Hurray
-      if: contains(fromJson(job.*.status),'sucess')  
+      if: contains(fromJson(job.status),'sucess')  
       run: |
-        echo 'Its a ${{ fromJson(job.*.status) }}'    
+        echo 'Yay! Its a ${{ fromJson(job.status) }}'    
         
