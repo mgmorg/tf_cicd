@@ -78,11 +78,6 @@ jobs:
         echo '${{ toJson(job) }}'
         echo '${{ toJson(job.status) }}'
 
-    - name: Failure
-      if: contains(fromJson(job.status),'failure')  
-      run: |
-        echo 'Opps, Its a ${{ fromJson(job.status) }}!'     
-
     - name: Hurray
       if: contains(fromJson(job.status),'sucess')  
       run: |
