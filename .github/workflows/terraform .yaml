@@ -11,6 +11,8 @@ on:
   push:
     branches: [ "main", "develop" ]
   pull_request:
+
+run-name: "Terraform EC2 Deploy by @${{ github.actor }},through event: ${{ github.event_name }} "
    
 permissions:
   contents: read
